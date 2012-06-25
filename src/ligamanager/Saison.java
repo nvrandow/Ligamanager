@@ -58,8 +58,9 @@ public class Saison {
 		Begegnung[] begegnungen = new Begegnung[pairs.size()];//*2
 		for(int i=0; i<begegnungen.length; i++){
 			Pair<Team> p = pairs.get(i);//%pairs.size()
+                // anstossZeiten[i%anstossZeiten.length]
                // schiedsrichter[i%schiedsrichter.length]   Turnus
-			begegnungen[i] = new Begegnung(p.getE1(), p.getE2(), this.schiedsrichter.get(i%this.schiedsrichter.size()), true);//i<pairs.size()-1
+			begegnungen[i] = new Begegnung(anstossZeiten[i%anstossZeiten.length], p.getE1(), p.getE2(), this.schiedsrichter.get(i%this.schiedsrichter.size()), true);//i<pairs.size()-1
 		}
 
 		String[][] data = new String[begegnungen.length][9];

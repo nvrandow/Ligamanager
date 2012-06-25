@@ -55,10 +55,10 @@ public class Bundesliga {
 					"Tobias Stieler"
 				},
 				new String[]{
-					"15:30",
-					"17:30",
-					"18:30",
-					"20:30"
+					"Sa 15:30",
+					"Sa 17:30",
+					"So 18:30",
+					"So 20:30"
 				}
 			);
 		}

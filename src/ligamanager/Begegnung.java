@@ -7,9 +7,9 @@ public class Begegnung {
 	private boolean hinrunde;
 	private int score1, score2;
 
-	public Begegnung(Team t1, Team t2, String schiedsrichter, boolean hinrunde) {
+	public Begegnung(String anpfiff, Team t1, Team t2, String schiedsrichter, boolean hinrunde) {
 		this.datum = "25.06.2012";
-		this.anpfiff = "17:30";
+		this.anpfiff = anpfiff;
 		this.t1 = t1;
 		this.t2 = t2;
 		this.schiedsrichter = schiedsrichter;
