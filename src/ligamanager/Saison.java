@@ -1,15 +1,17 @@
 package ligamanager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Saison {
 
 	private Team[] teams;
-	private String[] schiedsrichter, anstossZeiten;
+	private ArrayList<String> schiedsrichter;
+    private String[] anstossZeiten;
 
 	public Saison(Team[] teams, String[] schiedsrichter, String[] anstossZeiten) {
 		this.teams = teams;
-		this.schiedsrichter = schiedsrichter;
+		this.schiedsrichter = Utils.mix(new ArrayList(Arrays.asList(schiedsrichter)));
 		this.anstossZeiten = anstossZeiten;
 
 		ArrayList<Pair<Team>> pairs = null;
@@ -20,7 +22,7 @@ public class Saison {
 
 			int aktuellesI = 0, keineVeraenderungSeit = 0;
 
-			pairs = new Utils<Pair<Team>>().mix(new Utils<Team>().allPairs(teams));
+			pairs = Utils.mix(new Utils<Team>().allPairs(teams));
 			ArrayList spielenDiesesWeSchon = new ArrayList(anstossZeiten.length);
 			for(int i=0; i<pairs.size(); i++){
 
@@ -57,7 +59,7 @@ public class Saison {
 		for(int i=0; i<begegnungen.length; i++){
 			Pair<Team> p = pairs.get(i);//%pairs.size()
                // schiedsrichter[i%schiedsrichter.length]   Turnus
-			begegnungen[i] = new Begegnung(p.getE1(), p.getE2(), schiedsrichter[i%schiedsrichter.length], true);//i<pairs.size()-1
+			begegnungen[i] = new Begegnung(p.getE1(), p.getE2(), this.schiedsrichter.get(i%this.schiedsrichter.size()), true);//i<pairs.size()-1
 		}
 
 		String[][] data = new String[begegnungen.length][9];

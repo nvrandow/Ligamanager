@@ -47,7 +47,7 @@ public class Utils<E> {
 		else
 			throw new ParseException(start + " is no saturday!", 0);
 		return saturdays;
-	} 
+	}
 
 	/**
 	 * Elemente werden nach dem Zufallsprinzip umsortiert
@@ -55,7 +55,7 @@ public class Utils<E> {
 	 * @param src generische Liste
 	 * @return gemischte Liste
 	 */
-	public ArrayList mix(ArrayList src) {
+	public static ArrayList mix(ArrayList src) {
 		ArrayList dest = new ArrayList(src.size());
 		// Solange src nicht lehr ist...
 		while(!src.isEmpty()){
