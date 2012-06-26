@@ -3,6 +3,7 @@
 * Mannschaften und Schiedsrichter der Saison 2011/12 (Bundesliga.ods)
 * Anpfiff: Samstag 15:30 und 17:30, Sonntag 18:30 und 20:30
 ## Einzelschritte
+
 1. Alle Kombinationen (Begegnungen) werden systematisch ermittelt Beispiel-Output
 2. Die Liste der Begegnungen wird zufällig umsortiert
 3. Mannschaft hat dieses Wochenende schon gespielt => Begegnung wird herausgekommen und am Ende eingefügt (Nachteil: wenn durch wenige Vereinen im Verhältnis zu Anpfiffzeiten unmöglich, unendliche Laufzeit; Passiert bei 18 Teams + 4 Zeiten jedoch nie)
