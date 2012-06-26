@@ -1,7 +1,9 @@
 ﻿# Modus (Vorgehensweise des Algorithmus)
+
 * Dem der 1. Deutschen Bundesliga nachempfunden, eventuell abweichend bzw. Vereinfacht
 * Mannschaften und Schiedsrichter der Saison 2011/12 (Bundesliga.ods)
 * Anpfiff: Samstag 15:30 und 17:30, Sonntag 18:30 und 20:30
+
 ## Einzelschritte
 
 1. Alle Kombinationen (Begegnungen) werden systematisch ermittelt Beispiel-Output
