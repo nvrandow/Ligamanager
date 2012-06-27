@@ -1,6 +1,8 @@
 package ligamanager;
 
-public class Team {
+import java.io.Serializable;
+
+public class Team implements Serializable {
 
 	private String name, stadion;
 	private int punkte;

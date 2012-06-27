@@ -12,3 +12,5 @@
 4. Schritt 3 wird wiederholt falls nachdem alle verbleibenden Möglichkeiten ausprobiert wurden ohne eine mögliche Lösung zu erhalten
 5. In der Hinrunde ist das Team1 Heimmahnschaft, im Anschluss (Rückrunde) jeweils Team2
 6. Schiedsrichter werden zufällig umsortiert; dann turnusmäßig Wiederholung der Liste
+
+Spielplan wird serialisiert und in "data.ser" gespeichert.

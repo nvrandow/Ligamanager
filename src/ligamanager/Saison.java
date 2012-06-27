@@ -1,18 +1,16 @@
 package ligamanager;
 
+import java.io.Serializable;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Saison {
+public class Saison implements Serializable {
 
-	private Team[] teams;
-	private ArrayList<String> schiedsrichter;
-    private String[] anstossZeiten;
+	private Begegnung[] begegnungen;
 
 	public Saison(Team[] teams, String[] schiedsrichter, String[] anstossZeiten) {
-		this.teams = teams;
-		this.schiedsrichter = Utils.mix(new ArrayList(Arrays.asList(schiedsrichter)));
-		this.anstossZeiten = anstossZeiten;
+		ArrayList<String> sr = Utils.mix(new ArrayList(Arrays.asList(schiedsrichter)));
 
 		ArrayList<Pair<Team>> pairs = null;
 
@@ -54,20 +52,25 @@ public class Saison {
 				}
 			}
 		}
-
-		Begegnung[] begegnungen = new Begegnung[pairs.size()];//*2
-		for(int i=0; i<begegnungen.length; i++){
-			Pair<Team> p = pairs.get(i);//%pairs.size()
-                // anstossZeiten[i%anstossZeiten.length]
-               // schiedsrichter[i%schiedsrichter.length]   Turnus
-			begegnungen[i] = new Begegnung(anstossZeiten[i%anstossZeiten.length], p.getE1(), p.getE2(), this.schiedsrichter.get(i%this.schiedsrichter.size()), true);//i<pairs.size()-1
-		}
-
-		String[][] data = new String[begegnungen.length][9];
+        
+        try{ 
+            String[] days = Utils.nextSaturdaysAndSundays("11.02.12", pairs.size()); 
+            begegnungen = new Begegnung[pairs.size()];//*2
+            for(int i=0; i<begegnungen.length; i++){
+                Pair<Team> p = pairs.get(i);//%pairs.size()
+                    // anstossZeiten[i%anstossZeiten.length]
+                // schiedsrichter[i%schiedsrichter.length]   Turnus
+                begegnungen[i] = new Begegnung(days[i], anstossZeiten[i%anstossZeiten.length], p.getE1(), p.getE2(), sr.get(i%sr.size()), true);//i<pairs.size()-1
+            }
+        }catch(ParseException ex){}
+	}
+    
+    public void print() {
+        String[][] data = new String[begegnungen.length][9];
 		for(int i=0; i<data.length; i++)
 			data[i] = begegnungen[i].asJTableRow();
 
 		MyUtil.printStringArray2d(data, new boolean[]{false, false, false, false, true, false, false, false, false});
-	}
+    }
 
 }

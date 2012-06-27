@@ -1,14 +1,16 @@
 package ligamanager;
 
-public class Begegnung {
+import java.io.Serializable;
+
+public class Begegnung implements Serializable {
 
 	private String datum, anpfiff, schiedsrichter;
 	private Team t1, t2;
 	private boolean hinrunde;
 	private int score1, score2;
 
-	public Begegnung(String anpfiff, Team t1, Team t2, String schiedsrichter, boolean hinrunde) {
-		this.datum = "25.06.2012";
+	public Begegnung(String datum, String anpfiff, Team t1, Team t2, String schiedsrichter, boolean hinrunde) {
+		this.datum = datum;
 		this.anpfiff = anpfiff;
 		this.t1 = t1;
 		this.t2 = t2;

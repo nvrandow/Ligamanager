@@ -14,7 +14,7 @@ import java.util.Date;
 public class Utils<E> {
 
 	/**
-	 * Erzeigt alle m&ouml;glichen 2er-Kombinationen aus einer Liste von Objekten
+	 * Erzeugt alle m&ouml;glichen 2er-Kombinationen aus einer Liste von Objekten
 	 *
 	 * @param elements beliebig langes Array
 	 * @return Liste von Arrays mit je 2 Elementen (0=>Partner1, 1=>Partner2)
@@ -28,40 +28,44 @@ public class Utils<E> {
 	}
 
 	/**
-	 * Giebt <code>number</code> Samstage ab <code>start</code> zur&uuml;ck
+	 * Gibt <code>number</code> Samstage ab <code>start</code> zur&uuml;ck
 	 *
-	 * @param start erster der Samstage (z. B. 11.02.12)
-	 * @param number Anzahl an ben&ouml;tigten Samstagen
-	 * @return <code>number</code> Samstage, inklusive <code>start</code>
+	 * @param start erster Samstage (z. B. 11.02.12)
+	 * @param number Anzahl an ben&ouml;tigten Samstagen + Sonntage (bei ungerader Zahl ist letztes Datum ein Samstag)
+	 * @return <code>number</code> Samstage + Sonntage, inklusive <code>start</code>
 	 * @throws ParseException wenn falsches Format oder <code>start</code> kein Samstag
 	 */
-	public static String[] nextSaturdays(String start, int number) throws ParseException {
+	public static String[] nextSaturdaysAndSundays(String startSaturday, int number) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy");
-		Date date = sdf.parse(start);
+		Date date = sdf.parse(startSaturday);
+        long secPerDay = 604800000; // in extra long-Variable => kein int-Überlauf
 		long time = date.getTime();
-		String[] saturdays = new String[number];
+		String[] days = new String[number];
 		if(date.getDay() == 6){
-			for(int i=0; i<number; i++)
-				saturdays[i] = sdf.format(new Date(time+604800000*i));
-		}
+			for(int i=0; i<number/2*2; i+=2){ // "/2*2" => bei ungeraden Zahlen wird nicht versucht einen letzten Sonnatg einzutragen
+				days[i] = sdf.format(new Date(time+secPerDay*i/2));
+				days[i+1] = sdf.format(new Date(time+secPerDay*i/2+86400000));
+            }
+            if(number%2 != 0)
+                days[number-1] = sdf.format(new Date(time+secPerDay*(number-1)/2));
+        }
 		else
-			throw new ParseException(start + " is no saturday!", 0);
-		return saturdays;
+			throw new ParseException(startSaturday + " is no saturday!", 0);
+		return days;
 	}
 
 	/**
 	 * Elemente werden nach dem Zufallsprinzip umsortiert
 	 * 
-	 * @param src generische Liste
+	 * @param src Liste von Elementen beliebigen Typs
 	 * @return gemischte Liste
 	 */
 	public static ArrayList mix(ArrayList src) {
 		ArrayList dest = new ArrayList(src.size());
 		// Solange src nicht lehr ist...
-		while(!src.isEmpty()){
+		while(!src.isEmpty())
 			// ...wird das Element an einer zufälligen Stelle (zwischen 0 und restlicht Länge von src) entfernt und ans Ende von dest gehängt
 			dest.add(src.remove((int) (Math.random()*src.size())));
-		}
 		return dest;
 	}
 

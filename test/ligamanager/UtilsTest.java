@@ -3,10 +3,6 @@ package ligamanager;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import ligamanager.Pair;
-import ligamanager.Pair;
-import ligamanager.Utils;
-import ligamanager.Utils;
 
 /**
  * Testklasse f&uuml;r Utils
@@ -22,7 +18,7 @@ public class UtilsTest {
 			System.out.println(p);
 
 		try{
-			for(String s : Utils.nextSaturdays("11.02.12", 6))
+			for(String s : Utils.nextSaturdaysAndSundays("11.02.12", 5)) // 6
 				System.out.println(s);
 		}
 		catch(ParseException ex){
@@ -31,7 +27,7 @@ public class UtilsTest {
 
 		ArrayList<String> referees = new ArrayList<String>();
 		referees.addAll(Arrays.asList("Thomas", "Frank", "Petrov", "von Randow", "Schwaiger", "Freytag"));
-		referees = new Utils().mix(referees);
+		referees = Utils.mix(referees);
 		for(String s : referees)
 			System.out.println(s);
 	}

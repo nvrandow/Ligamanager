@@ -1,15 +1,19 @@
 package ligamanager;
 
-import java.io.File;
+import java.io.*;
 
 public class Bundesliga {
 
 	public static void main(String[] args) {
-		if(new File("data.ser").exists()){
+        Saison saison = null;
+		try{
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.ser"));
+            saison = (Saison) ois.readObject();
+            ois.close();
 		}
-		else{
+		catch(FileNotFoundException ex){
 			// Bundesliga starten (Spielplan erstellen)
-			Saison saison = new Saison(
+			saison = new Saison(
 				new Team[]{
 					new Team("FC Augsburg", "SGL arena"),
 					new Team("Hertha BSC", "Olympiastadion Berlin"),
@@ -61,7 +65,13 @@ public class Bundesliga {
 					"So 20:30"
 				}
 			);
-		}
+            try{ 
+                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data.ser"));
+                oos.writeObject(saison);
+                oos.close();
+            }catch(IOException ioex){}
+		}catch(Exception ex){}
+        saison.print();
 	}
 
 }
