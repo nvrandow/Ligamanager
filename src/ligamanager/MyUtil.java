@@ -2,6 +2,11 @@ package ligamanager;
 
 public class MyUtil {
 
+    /**
+     * Ausgabe eines 2d-String-Arrays als Tabelle, wobei die Spalten jeweils so breit wie ihr l&auml;ngstes Element sind
+     * 
+     * @param array (Spalten &times; Zeilen) 
+     */
 	public static void printStringArray2d(String[][] array) {
 		try{
 			boolean[] rightAligned = new boolean[array[0].length];
@@ -13,6 +18,12 @@ public class MyUtil {
 		}
 	}
 
+    /**
+     * 
+     * @param array (Spalten &times; Zeilen) 
+     * @param rightAligned gibt f&uuml;r jede Spalte an, ob sie rechts-b&uuml;ndig sein soll (<code>true</code>) oder nicht (<code>false</code>)
+     * @throws IllegalArgumentException wenn <code>array</code> und <code>rightAligned</code> nicht gleichlang sind
+     */
 	public static void printStringArray2d(String[][] array, boolean[] rightAligned) throws IllegalArgumentException {
 		if(array[0].length != rightAligned.length)
 			throw new IllegalArgumentException("Column-count has to match align-count!");

@@ -30,7 +30,7 @@ public class Utils<E> {
 	/**
 	 * Gibt <code>number</code> Samstage ab <code>start</code> zur&uuml;ck
 	 *
-	 * @param start erster Samstage (z. B. 11.02.12)
+	 * @param startSaturday erster Samstage (z. B. 11.02.12)
 	 * @param number Anzahl an ben&ouml;tigten Samstagen + Sonntage (bei ungerader Zahl ist letztes Datum ein Samstag)
 	 * @return <code>number</code> Samstage + Sonntage, inklusive <code>start</code>
 	 * @throws ParseException wenn falsches Format oder <code>start</code> kein Samstag
