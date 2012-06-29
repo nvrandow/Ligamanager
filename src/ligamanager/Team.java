@@ -2,7 +2,7 @@ package ligamanager;
 
 import java.io.Serializable;
 
-public class Team implements Serializable {
+public class Team implements Serializable, Comparable {
 
 	private String name, stadion;
 	private int punkte;
@@ -28,5 +28,9 @@ public class Team implements Serializable {
 	public String toString() {
 		return name;
 	}
+
+    public int compareTo(Object t) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }
