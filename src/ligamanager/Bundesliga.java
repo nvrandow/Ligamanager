@@ -5,11 +5,11 @@ import java.io.*;
 public class Bundesliga {
 
 	public static void main(String[] args) {
-        Saison saison = null;
+		Saison saison = null;
 		try{
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.ser"));
-            saison = (Saison) ois.readObject();
-            ois.close();
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.ser"));
+			saison = (Saison) ois.readObject();
+			ois.close();
 		}
 		catch(FileNotFoundException ex){
 			// Bundesliga starten (Spielplan erstellen)
@@ -63,15 +63,17 @@ public class Bundesliga {
 					"Sa 17:30",
 					"So 18:30",
 					"So 20:30"
-				}
-			);
-            try{ 
-                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data.ser"));
-                oos.writeObject(saison);
-                oos.close();
-            }catch(IOException ioex){}
-		}catch(Exception ex){}
-        saison.print();
+				});
+			try{
+				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data.ser"));
+				oos.writeObject(saison);
+				oos.close();
+			}
+			catch(IOException ioex){
+			}
+		}
+		catch(Exception ex){
+		}
+		saison.print();
 	}
-
 }

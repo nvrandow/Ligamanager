@@ -21,8 +21,8 @@ public class Utils<E> {
 	 */
 	public ArrayList<Pair<E>> allPairs(E[] elements) {
 		ArrayList<Pair<E>> list = new ArrayList<Pair<E>>();
-		for(int i=0; i<elements.length; i++)
-			for(int j=i+1; j<elements.length; j++) // nur elemente danach => nie a-b UND b-a (Rückspiele werden anders gemacht)
+		for(int i = 0; i < elements.length; i++)
+			for(int j = i + 1; j < elements.length; j++) // nur elemente danach => nie a-b UND b-a (Rückspiele werden anders gemacht)
 				list.add(new Pair(elements[i], elements[j]));
 		return list;
 	}
@@ -38,17 +38,17 @@ public class Utils<E> {
 	public static String[] nextSaturdaysAndSundays(String startSaturday, int number) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy");
 		Date date = sdf.parse(startSaturday);
-        long secPerDay = 604800000; // in extra long-Variable => kein int-Überlauf
+		long secPerDay = 604800000; // in extra long-Variable => kein int-Überlauf
 		long time = date.getTime();
 		String[] days = new String[number];
 		if(date.getDay() == 6){
-			for(int i=0; i<number/2*2; i+=2){ // "/2*2" => bei ungeraden Zahlen wird nicht versucht einen letzten Sonnatg einzutragen
-				days[i] = sdf.format(new Date(time+secPerDay*i/2));
-				days[i+1] = sdf.format(new Date(time+secPerDay*i/2+86400000));
-            }
-            if(number%2 != 0)
-                days[number-1] = sdf.format(new Date(time+secPerDay*(number-1)/2));
-        }
+			for(int i = 0; i < number / 2 * 2; i += 2){ // "/2*2" => bei ungeraden Zahlen wird nicht versucht einen letzten Sonnatg einzutragen
+				days[i] = sdf.format(new Date(time + secPerDay * i / 2));
+				days[i + 1] = sdf.format(new Date(time + secPerDay * i / 2 + 86400000));
+			}
+			if(number % 2 != 0)
+				days[number - 1] = sdf.format(new Date(time + secPerDay * (number - 1) / 2));
+		}
 		else
 			throw new ParseException(startSaturday + " is no saturday!", 0);
 		return days;
@@ -65,8 +65,7 @@ public class Utils<E> {
 		// Solange src nicht lehr ist...
 		while(!src.isEmpty())
 			// ...wird das Element an einer zufälligen Stelle (zwischen 0 und restlicht Länge von src) entfernt und ans Ende von dest gehängt
-			dest.add(src.remove((int) (Math.random()*src.size())));
+			dest.add(src.remove((int) (Math.random() * src.size())));
 		return dest;
 	}
-
 }
