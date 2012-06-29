@@ -29,8 +29,7 @@ public class Team implements Serializable, Comparable {
 		return name;
 	}
 
-    public int compareTo(Object t) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+	public int compareTo(Object t) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 }

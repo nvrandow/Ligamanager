@@ -26,7 +26,6 @@ public class Begegnung implements Serializable {
 	}
 
 	public String[] asJTableRow() {
-		return new String[]{hinrunde?"H":"R", datum, anpfiff, t1.getStadion(), t1.toString(), String.valueOf(score1), String.valueOf(score2), t2.toString(), schiedsrichter};
+		return new String[]{hinrunde ? "H" : "R", datum, anpfiff, t1.getStadion(), t1.toString(), String.valueOf(score1), String.valueOf(score2), t2.toString(), schiedsrichter};
 	}
-
 }
