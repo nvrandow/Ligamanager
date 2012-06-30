@@ -1,5 +1,11 @@
 package ligamanager;
 
+/**
+ * Speichert 2 Elemente eines beliebigen gleichen Typs
+ *
+ * @author Nikolas von Randow
+ * @version 1.0
+ */
 public class Pair<E> {
 
 	private E e1, e2;

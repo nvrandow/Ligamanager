@@ -5,12 +5,18 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Enth&auml;lt alle Daten einer Saison
+ *
+ * @author Nikolas von Randow
+ * @version 1.0
+ */
 public class Saison implements Serializable {
 
 	private Begegnung[] begegnungen;
 
 	public Saison(Team[] teams, String[] schiedsrichter, String[] anstossZeiten) {
-		ArrayList<String> sr = Utils.mix(new ArrayList(Arrays.asList(schiedsrichter)));
+		ArrayList<String> sr = new Utils<String>().mix(new ArrayList<String>(Arrays.asList(schiedsrichter)));
 
 		ArrayList<Pair<Team>> pairs = null;
 
@@ -20,8 +26,8 @@ public class Saison implements Serializable {
 
 			int aktuellesI = 0, keineVeraenderungSeit = 0;
 
-			pairs = Utils.mix(new Utils<Team>().allPairs(teams));
-			ArrayList spielenDiesesWeSchon = new ArrayList(anstossZeiten.length);
+			pairs = new Utils<Pair<Team>>().mix(new Utils<Team>().allPairs(teams));
+			ArrayList<Team> spielenDiesesWeSchon = new ArrayList<Team>(anstossZeiten.length);
 			for(int i = 0; i < pairs.size(); i++){
 
 				// Wenn alle verbleibenden Elemente für aktuellen Platz durchprobiert wurden, wird ganz von forn angefangen
@@ -72,6 +78,6 @@ public class Saison implements Serializable {
 		for(int i = 0; i < data.length; i++)
 			data[i] = begegnungen[i].asJTableRow();
 
-		MyUtil.printStringArray2d(data, new boolean[]{false, false, false, false, true, false, false, false, false});
+		Utils.printStringArray2d(data, new boolean[]{false, false, false, false, true, false, false, false, false});
 	}
 }

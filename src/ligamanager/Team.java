@@ -2,7 +2,13 @@ package ligamanager;
 
 import java.io.Serializable;
 
-public class Team implements Serializable, Comparable {
+/**
+ * Representiert eine Mannschaft
+ *
+ * @author Nikolas von Randow
+ * @version 1.0
+ */
+public class Team implements Serializable, Comparable<Team> {
 
 	private String name, stadion;
 	private int punkte;
@@ -29,7 +35,8 @@ public class Team implements Serializable, Comparable {
 		return name;
 	}
 
-	public int compareTo(Object t) {
-		throw new UnsupportedOperationException("Not supported yet.");
+	@Override
+	public int compareTo(Team t) {
+		return 0; // TODO
 	}
 }

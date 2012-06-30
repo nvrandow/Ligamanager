@@ -2,6 +2,12 @@ package ligamanager;
 
 import java.io.Serializable;
 
+/**
+ * Kapselt die Daten eines Fu&szlig;ballspiels
+ *
+ * @author Nikolas von Randow
+ * @version 1.0
+ */
 public class Begegnung implements Serializable {
 
 	private String datum, anpfiff, schiedsrichter;
@@ -25,6 +31,9 @@ public class Begegnung implements Serializable {
 		this.score2 = score2;
 	}
 
+	/**
+	 * @return Objekt als String-Array
+	 */
 	public String[] asJTableRow() {
 		return new String[]{hinrunde ? "H" : "R", datum, anpfiff, t1.getStadion(), t1.toString(), String.valueOf(score1), String.valueOf(score2), t2.toString(), schiedsrichter};
 	}

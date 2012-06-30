@@ -2,6 +2,12 @@ package ligamanager;
 
 import java.io.*;
 
+/**
+ * Enth&auml;lt mit main-Methode, Startet eine Saison oder l&auml;dt sie aus data.ser, Enth&auml;lt Datein von 2011/12
+ *
+ * @author Nikolas von Randow
+ * @version 1.0
+ */
 public class Bundesliga {
 
 	public static void main(String[] args) {

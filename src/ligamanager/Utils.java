@@ -23,7 +23,7 @@ public class Utils<E> {
 		ArrayList<Pair<E>> list = new ArrayList<Pair<E>>();
 		for(int i = 0; i < elements.length; i++)
 			for(int j = i + 1; j < elements.length; j++) // nur elemente danach => nie a-b UND b-a (Rückspiele werden anders gemacht)
-				list.add(new Pair(elements[i], elements[j]));
+				list.add(new Pair<E>(elements[i], elements[j]));
 		return list;
 	}
 
@@ -35,6 +35,7 @@ public class Utils<E> {
 	 * @return <code>number</code> Samstage + Sonntage, inklusive <code>start</code>
 	 * @throws ParseException wenn falsches Format oder <code>start</code> kein Samstag
 	 */
+	@SuppressWarnings("deprecation")
 	public static String[] nextSaturdaysAndSundays(String startSaturday, int number) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy");
 		Date date = sdf.parse(startSaturday);
@@ -60,12 +61,51 @@ public class Utils<E> {
 	 * @param src Liste von Elementen beliebigen Typs
 	 * @return gemischte Liste
 	 */
-	public static ArrayList mix(ArrayList src) {
-		ArrayList dest = new ArrayList(src.size());
+	public ArrayList<E> mix(ArrayList<E> src) {
+		ArrayList<E> dest = new ArrayList<E>(src.size());
 		// Solange src nicht lehr ist...
 		while(!src.isEmpty())
 			// ...wird das Element an einer zufälligen Stelle (zwischen 0 und restlicht Länge von src) entfernt und ans Ende von dest gehängt
 			dest.add(src.remove((int) (Math.random() * src.size())));
 		return dest;
+	}
+	public static void printStringArray2d(String[][] array) {
+		try{
+			boolean[] rightAligned = new boolean[array[0].length];
+			for(int i = 0; i < rightAligned.length; i++)
+				rightAligned[i] = false;
+			printStringArray2d(array, rightAligned);
+		}
+		catch(IllegalArgumentException ex){
+		}
+	}
+
+	/**
+	 * 
+	 * @param array (Spalten &times; Zeilen) 
+	 * @param rightAligned gibt f&uuml;r jede Spalte an, ob sie rechts-b&uuml;ndig sein soll (<code>true</code>) oder nicht (<code>false</code>)
+	 * @throws IllegalArgumentException wenn <code>array</code> und <code>rightAligned</code> nicht gleichlang sind
+	 */
+	public static void printStringArray2d(String[][] array, boolean[] rightAligned) throws IllegalArgumentException {
+		if(array[0].length != rightAligned.length)
+			throw new IllegalArgumentException("Column-count has to match align-count!");
+
+		int[] maxLen = new int[array[0].length];
+		for(int i = 0; i < array[0].length; i++){
+			maxLen[i] = Integer.MIN_VALUE;
+			for(int j = 0; j < array.length; j++)
+				if(maxLen[i] < array[j][i].length())
+					maxLen[i] = array[j][i].length();
+		}
+		for(int i = 0; i < array.length; i++){
+			for(int j = 0; j < array[i].length; j++){
+				System.out.print(" | ");
+				if(!rightAligned[j])System.out.print(array[i][j]);
+				for(int k = 0; k < maxLen[j] - array[i][j].length(); k++)
+					System.out.print(" ");
+				if(rightAligned[j])System.out.print(array[i][j]);
+			}
+			System.out.println(" | ");
+		}
 	}
 }
