@@ -37,6 +37,6 @@ public class Team implements Serializable, Comparable<Team> {
 	
 	@Override
 	public int compareTo(Team t) {
-		return 0; // TODO
+		return -1; // TODO
 	}
 }
