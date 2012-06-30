@@ -6,7 +6,7 @@
 
 ## Einzelschritte
 
-1. Alle Kombinationen (Begegnungen) werden systematisch ermittelt Beispiel-Output
+1. Alle Kombinationen (Begegnungen) werden systematisch ermittelt
 2. Die Liste der Begegnungen wird zufällig umsortiert
 3. Mannschaft hat dieses Wochenende schon gespielt => Begegnung wird herausgekommen und am Ende eingefügt (Nachteil: wenn durch wenige Vereinen im Verhältnis zu Anpfiffzeiten unmöglich, unendliche Laufzeit; Passiert bei 18 Teams + 4 Zeiten jedoch nie)
 4. Schritt 3 wird wiederholt falls nachdem alle verbleibenden Möglichkeiten ausprobiert wurden ohne eine mögliche Lösung zu erhalten
