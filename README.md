@@ -16,4 +16,4 @@
 * Spielplan wird serialisiert und in "data.ser" gespeichert.
 * Punktevergabe: **0** für Niederlage, **+1** für Unentschieden, **+3** für Sieg
 * Vergleich: erst nach Punkten, dann nach Tordifferenz
-* Test mit zufälligen Ergebnissen, Tore zwischen 0 und 4
+* Test mit zufälligen Ergebnissen, Tore zwischen **0** und **4**
