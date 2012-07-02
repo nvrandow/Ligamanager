@@ -13,4 +13,7 @@
 5. In der Hinrunde ist das Team1 Heimmahnschaft, im Anschluss (Rückrunde) jeweils Team2
 6. Schiedsrichter werden zufällig umsortiert; dann turnusmäßig Wiederholung der Liste
 
-Spielplan wird serialisiert und in "data.ser" gespeichert.
+* Spielplan wird serialisiert und in "data.ser" gespeichert.
+* Punktevergabe: *0* für Niederlage, *+1* für Unentschieden, *+3* für Sieg
+* Vergleich: erst nach Punkten, dann nach Tordifferenz
+* Test mit zufälligen Ergebnissen, Tore zwischen 0 und 4

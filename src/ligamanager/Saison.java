@@ -13,9 +13,12 @@ import java.util.Arrays;
  */
 public class Saison implements Serializable {
 	
+	private Team[] teams;
 	private Begegnung[] begegnungen;
 	
 	public Saison(Team[] teams, String[] schiedsrichter, String[] anstossZeiten) {
+		this.teams = teams;
+		
 		ArrayList<String> sr = new Utils<String>().mix(new ArrayList<String>(Arrays.asList(schiedsrichter)));
 		
 		ArrayList<Pair<Team>> pairs = null;
@@ -74,11 +77,33 @@ public class Saison implements Serializable {
 		}
 	}
 	
+	public Team[] getTeams() {
+		return teams;
+	}
+	
 	public void print() {
 		String[][] data = new String[begegnungen.length][9];
 		for(int i = 0; i < data.length; i++)
 			data[i] = begegnungen[i].asJTableRow();
 		
 		Utils.printStringArray2d(data, new boolean[]{false, false, false, false, true, false, false, false, false});
+	}
+	
+	public void printTabelle() {
+		Arrays.sort(teams);
+		String[][] data = new String[teams.length][4];
+		for(int i = 0; i < data.length; i++)
+			data[i] = new String[]{i+1+".", teams[i].asJTableRow()[0], teams[i].asJTableRow()[1], teams[i].asJTableRow()[2]};
+		
+		Utils.printStringArray2d(data, new boolean[]{true, false, true, true});
+	}
+	
+	/**
+	 * Spielt alle Begegnungen durch
+	 * Dabei werden den Teams zuf&auml;llig Tore zwischen 0 und 4 zugeordnet
+	 */
+	public void playRandom() {
+		for(Begegnung b : begegnungen)
+			b.setResults((int) (Math.random()*5), (int) (Math.random()*5));
 	}
 }

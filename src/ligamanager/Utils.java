@@ -102,6 +102,12 @@ public class Utils<E> {
 				if(maxLen[i] < array[j][i].length())
 					maxLen[i] = array[j][i].length();
 		}
+		int length = 3;
+		for(int len : maxLen)
+			length += len+3;
+		for(int i=0; i<length; i++)
+			System.out.print("=");
+		System.out.println();
 		for(int i = 0; i < array.length; i++){
 			for(int j = 0; j < array[i].length; j++){
 				System.out.print(" | ");
@@ -114,5 +120,9 @@ public class Utils<E> {
 			}
 			System.out.println(" | ");
 		}
+		for(int i=0; i<length; i++)
+			System.out.print("=");
+		System.out.println();
+		System.out.println();
 	}
 }
