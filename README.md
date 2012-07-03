@@ -1,7 +1,7 @@
 ﻿# Modus (Vorgehensweise des Algorithmus)
 
 * Dem der 1. Deutschen Bundesliga nachempfunden, eventuell abweichend bzw. Vereinfacht
-* Mannschaften und Schiedsrichter der Saison 2011/12 (Bundesliga.ods)
+* Mannschaften und Schiedsrichter der Saison 2011/12 ((Bundesliga.ods)[https://github.com/nvrandow/Ligamanager/blob/master/Bundesliga.ods?raw=true])
 * Anpfiff: Samstag 15:30 und 17:30, Sonntag 18:30 und 20:30
 
 ## Einzelschritte
